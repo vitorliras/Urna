@@ -1,10 +1,15 @@
 package Model;
 
 public class Candidato extends Pessoa{
+
 	private Partido partido;
 	private int quantidadeVotos;
-	
-	
+		
+	public Candidato(Partido partido, int quantidadeVotos) {
+		
+		this.partido = partido;
+		this.quantidadeVotos = quantidadeVotos;
+	}
 	public Partido getPartido() {
 		return partido;
 	}
