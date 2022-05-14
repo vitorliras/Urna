@@ -1,4 +1,4 @@
-package PackMain;
+package UI;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -11,42 +11,23 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
-		
-		
-		int opcao;
+		int opcao, resp;
 		do {
 			System.out.println("Deseja votar: 1-Sim 0-Não");
-			int resp = sc.nextInt();
+		    resp = sc.nextInt();
 			if(resp == 0) 
 				opcao=0;
 			else {			
 				CadastrarEleitor();
-				System.out.println("Consultar candidato, digite 1"); //ellen
-				System.out.println("Votar, digite 2");//alisson
-				System.out.println("Apuração de votos, digite 3");//lucas
-				System.out.println("Para sair, digite 0");
-				
-				opcao = sc.nextInt();
-	
-				switch (opcao) {
-				case 1:
-					consultarCandidatos();
-					break;
-				case 2:
-					votar();
-					break;
-				case 3:
-					ApuracaoDeVotos();
-					break;
-				case 0:
-					break;
-				default:
-					System.out.println("Digite uma opção válida.");
-					break;
-				}
+				opcao = menu();
 			}
 
 		} while (opcao != 0);
+		resultado();		
+	}
+
+	private static void resultado() {		
+		
 	}
 
 	private static void CadastrarEleitor() {
@@ -61,7 +42,7 @@ public class Main {
 		Random r = new Random(); 
 		int idade = r.nextInt(65);
 		if(idade < 16) {
-			idade = idade + 20;
+			idade = idade + 16;
 		}
 		e.setNome(nome);
 		e.setTitulo(titulo);
@@ -69,7 +50,7 @@ public class Main {
 		
 		RepEleitor.getInstancia().Add(e);
 		System.out.println(RepEleitor.getInstancia().mostrarEleitor(titulo));
-		
+		limparConsole();
 	}
 
 	private static void ApuracaoDeVotos() {
@@ -91,5 +72,37 @@ public class Main {
 		for(int i =0; i < 400; i++)
 			System.out.println();
 	}
+	
+	public static int menu() {
+		System.out.println("================================");
+		System.out.println("| Consultar candidato, digite 1|"); //ellen
+		System.out.println("| Votar, digite 2              |");//alisson
+		System.out.println("| Apuração de votos, digite 3  |");//lucas
+		System.out.println("| Para sair, digite 0          |");
+		System.out.println("================================");
+		
+		int opcao = sc.nextInt();
+
+		switch (opcao) {
+		case 1:
+			consultarCandidatos();
+			break;
+		case 2:
+			votar();
+			break;
+		case 3:
+			ApuracaoDeVotos();
+			break;
+		case 0:
+			break;
+		default:
+			System.out.println("Digite uma opção válida.");
+			break;
+		}
+		limparConsole();
+		return opcao;
+	}
+	
+	
 
 }

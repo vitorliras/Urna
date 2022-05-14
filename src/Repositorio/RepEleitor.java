@@ -36,4 +36,15 @@ public class RepEleitor implements IRepEleitor {
 		return msg;
 	}
 
+	@Override
+	public int numeroEscolhido(int titulo) {
+		int n = 0;
+		for(Eleitor e : ListaEleitor) {
+			if(e != null && e.getTitulo() == titulo) {
+				n = e.getVotoEscolhido();
+			}
+		}
+		return n;
+	}
+
 }
