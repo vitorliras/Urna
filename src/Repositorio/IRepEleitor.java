@@ -5,7 +5,7 @@ import Model.Eleitor;
 public interface IRepEleitor {
 	
 	public void Add(Eleitor eleitor);	
-	public String mostrarEleitor(int titulo);
-	public int numeroEscolhido(int titulo);
+	public String mostrarEleitor(String titulo);
+	public int numeroEscolhido(String titulo);
 	
 }

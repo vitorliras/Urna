@@ -1,7 +1,7 @@
 package Model;
 
 public class Eleitor extends Pessoa {
-	private int titulo;
+	private String titulo;
 	private int votoEscolhido;
 	
 	
@@ -14,11 +14,11 @@ public class Eleitor extends Pessoa {
 		this.votoEscolhido = votoEscolhido;
 	}
 
-	public int getTitulo() {
+	public String getTitulo() {
 		return titulo;
 	}
 
-	public void setTitulo(int titulo) {
+	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
 	

@@ -24,20 +24,20 @@ public class RepEleitor implements IRepEleitor {
 	}
 
 	@Override
-	public String mostrarEleitor(int titulo) {
+	public String mostrarEleitor(String titulo) {
 		String msg="";
 		for(Eleitor e : ListaEleitor) {
-			if(e != null && e.getTitulo() == titulo)
+			if(e != null && e.getTitulo() == titulo) {
 			msg +="Nome: "+e.getNome()+
 				  "\nTitulo: "+e.getTitulo()+
-				  "\n";
-			
+				  "\n";	
+			}
 		}
 		return msg;
 	}
 
 	@Override
-	public int numeroEscolhido(int titulo) {
+	public int numeroEscolhido(String titulo) {
 		int n = 0;
 		for(Eleitor e : ListaEleitor) {
 			if(e != null && e.getTitulo() == titulo) {
