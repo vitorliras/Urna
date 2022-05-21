@@ -11,6 +11,7 @@ import Repositorio.RepEleitor;
 
 public class Main {
 	static Scanner sc = new Scanner(System.in);
+	private static String auxTitulo;
 	
 	public static void main(String[] args) {
 		
@@ -45,7 +46,7 @@ public class Main {
 		String nome = sc.nextLine();
 		System.out.println("Digite o titulo de elitor: ");
 		String titulo = sc.nextLine();
-		
+		auxTitulo = titulo;
 		Random r = new Random(); 
 		int idade = r.nextInt(65);
 		if(idade < 16) {
@@ -58,8 +59,7 @@ public class Main {
 		RepEleitor.getInstancia().Add(e);
 		System.out.println(RepEleitor.getInstancia().mostrarEleitor(titulo));
 		limparConsole();
-		
-		
+	
 	}
 
 	private static void ApuracaoDeVotos() {
@@ -68,7 +68,24 @@ public class Main {
 	}
 
 	private static void votar() {
-		// TODO Auto-generated method stub
+		int aux = 2;
+		while(aux != 1) {
+		    System.out.println("Digite o numero do seu voto: ");
+		    int numero = sc.nextInt();
+		    System.out.println(RepCandidato.getInstancia().mostrarCandidatoPorNumero(numero));
+		    System.out.println("1- Confirmar / 2- Cancelar / 3- Branco");
+		    
+		    aux = sc.nextInt();
+		    if(aux == 1) {
+		    	RepCandidato.getInstancia().acrescentarVoto(numero);
+		    	RepEleitor.getInstancia().numeroEscolhido(auxTitulo, numero);
+		    }
+		    if(aux == 3) {
+		    	RepCandidato.getInstancia().acrescentarVoto(0);
+		    	RepEleitor.getInstancia().numeroEscolhido(auxTitulo, 0);
+		    }
+		}
+		
 		
 	}
 
@@ -78,7 +95,7 @@ public class Main {
 		
 		int opcaoCandidato = sc.nextInt();
 		limparConsole();
-		System.out.println(RepCandidato.getInstancia().mostrarCandidato(opcaoCandidato));
+		System.out.println(RepCandidato.getInstancia().mostrarCandidatoPorNumero(opcaoCandidato));
 		
 	}
 	
@@ -104,7 +121,13 @@ public class Main {
 			break;
 		case 2:
 			votar();
-			CadastrarEleitor(1);
+			limparConsole();
+			System.out.println("próximo eleitor? 1-Sim / 2-não");
+			int resp = sc.nextInt();
+			if(resp ==1)
+				CadastrarEleitor(1);
+			else
+				opcao = 0;
 			aux++;
 			break;
 		case 3:
@@ -155,7 +178,13 @@ public class Main {
 		P2.setNumero(3);
 		c2.setPartido(P2);
 		
-		RepCandidato.getInstancia().Add(c2);
+		Candidato c3 = new Candidato();
+		Partido P3= new Partido();
+		c3.setNome("Branco");	
+		P3.setNumero(0);
+		c3.setPartido(P3);
+		
+		RepCandidato.getInstancia().Add(c3);
 		
 	}
 	

@@ -25,29 +25,36 @@ import Model.Partido;
 		}
 
 		@Override
-		public String mostrarCandidato(int numero) {
+		public String mostrarCandidatoPorNumero(int numero) {
 			String msg="";
-			Partido p = new Partido();
-			
-			for(Candidato c : ListaCandidato) {
-				if(c != null && c.getPartido().getNumero() == numero) {
-				msg +="Nome: "+c.getNome()+
-					  "\nNome do Partido: "+c.getPartido().getNome()+
-					  "\nNúmero do partido: "+c.getPartido().getNumero()+
-					  "\n";	
-				}			
-			}
-			if(msg == "") {
-				msg = "Candidato inexistente";
+			if(numero != 0) {
+				for(Candidato c : ListaCandidato) {
+					if(c != null && c.getPartido().getNumero() == numero) {
+					msg +="Nome: "+c.getNome()+
+						  "\nPartido: "+c.getPartido().getNome()+
+						  "\nNúmero do partido: "+c.getPartido().getNumero()+
+						  "\n";	
+					}			
+				}
+				if(msg == "") {
+					msg = "Candidato inexistente";
+				}
+			}else {
+				msg = "Branco";
 			}
 			return msg;
 		}
-
+		
 		@Override
-		public int numeroEscolhido(int numero) {
-			// TODO Auto-generated method stub
-			return 0;
-		}	
+	    public void acrescentarVoto(int numero) {
+			for(int i = 0; i < ListaCandidato.size(); i++) {
+				if(ListaCandidato.get(i) != null && ListaCandidato.get(i).getPartido().getNumero() == numero) {
+					
+					ListaCandidato.get(i).setQuantidadeVotos(ListaCandidato.get(i).getQuantidadeVotos()+1);
+				}
+			}
+
+	    }
 }
 
 	

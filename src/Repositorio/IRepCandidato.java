@@ -5,8 +5,8 @@
 	public interface IRepCandidato {
 		
 		public void Add(Candidato C);	
-		public String mostrarCandidato(int numero);
-		public int numeroEscolhido(int numero);
+		public String mostrarCandidatoPorNumero(int numero);
+		public void acrescentarVoto(int numero);
 		
 	}
 

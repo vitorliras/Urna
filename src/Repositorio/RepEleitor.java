@@ -37,14 +37,14 @@ public class RepEleitor implements IRepEleitor {
 	}
 
 	@Override
-	public int numeroEscolhido(String titulo) {
-		int n = 0;
+	public void numeroEscolhido(String titulo, int numero) {
 		for(Eleitor e : ListaEleitor) {
 			if(e != null && e.getTitulo() == titulo) {
-				n = e.getVotoEscolhido();
+				e.setVotoEscolhido(numero);
 			}
 		}
-		return n;
 	}
+	
+	
 
 }
