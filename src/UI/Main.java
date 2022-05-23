@@ -12,6 +12,7 @@ import Repositorio.RepEleitor;
 public class Main {
 	static Scanner sc = new Scanner(System.in);
 	private static String auxTitulo;
+	private static int jaVoltado=0;
 	
 	public static void main(String[] args) {
 		
@@ -63,7 +64,8 @@ public class Main {
 	}
 
 	private static void ApuracaoDeVotos() {
-		// TODO Auto-generated method stub
+		limparConsole();
+		System.out.println(RepCandidato.getInstancia().mostrarTodosCandidato());
 		
 	}
 
@@ -100,7 +102,7 @@ public class Main {
 	}
 	
 	private static void limparConsole() {
-		for(int i =0; i < 400; i++)
+		for(int i =0; i < 100; i++)
 			System.out.println();
 	}
 	
@@ -110,9 +112,9 @@ public class Main {
 		System.out.println("| Consultar candidato, digite 1|"); //ellen
 		System.out.println("| Votar, digite 2              |");//alisson
 		System.out.println("| Apuração de votos, digite 3  |");//lucas
-		System.out.println("| Para sair, digite 0          |");
+		System.out.println("| Resultado Final, digite 0    |");
 		System.out.println("================================");
-		int aux=0;
+		
 		int opcao = sc.nextInt();
 
 		switch (opcao) {
@@ -124,14 +126,14 @@ public class Main {
 			limparConsole();
 			System.out.println("próximo eleitor? 1-Sim / 2-não");
 			int resp = sc.nextInt();
+			jaVoltado++;
 			if(resp ==1)
 				CadastrarEleitor(1);
 			else
-				opcao = 0;
-			aux++;
+				opcao = 0;			
 			break;
 		case 3:
-			if(aux != 0)
+			if(jaVoltado != 0)
 				ApuracaoDeVotos();
 			else
 				System.out.println("Não houve votação");
@@ -144,10 +146,7 @@ public class Main {
 		}
 		return opcao;
 	}
-	private static int aux(int n) {
-		int aux = n;
-		return aux;
-	}
+
 	private static void criandoCandidatos() {
 		Candidato c = new Candidato();
 		Partido P = new Partido();
@@ -177,6 +176,8 @@ public class Main {
 		P2.setNome("SGTY");
 		P2.setNumero(3);
 		c2.setPartido(P2);
+		
+		RepCandidato.getInstancia().Add(c2);
 		
 		Candidato c3 = new Candidato();
 		Partido P3= new Partido();

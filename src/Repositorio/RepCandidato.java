@@ -20,8 +20,7 @@ import Model.Partido;
 		
 		@Override
 		public void Add(Candidato C) {
-			ListaCandidato.add(C);
-	
+			ListaCandidato.add(C);	
 		}
 
 		@Override
@@ -30,9 +29,9 @@ import Model.Partido;
 			if(numero != 0) {
 				for(Candidato c : ListaCandidato) {
 					if(c != null && c.getPartido().getNumero() == numero) {
-					msg +="Nome: "+c.getNome()+
-						  "\nPartido: "+c.getPartido().getNome()+
-						  "\nNúmero do partido: "+c.getPartido().getNumero()+
+					msg +="| Nome: "+c.getNome()+
+						  "\n| Partido: "+c.getPartido().getNome()+
+						  "\n| Número do partido: "+c.getPartido().getNumero()+
 						  "\n";	
 					}			
 				}
@@ -55,6 +54,21 @@ import Model.Partido;
 			}
 
 	    }
+
+		@Override
+		public String mostrarTodosCandidato() {
+			String msg="";
+			for(Candidato c : ListaCandidato) {
+				if(c.getPartido().getNumero() != 0) {
+				msg +="| Nome: "+c.getNome()+
+					  "\n| Partido: "+c.getPartido().getNome()+
+					  "\n| Número do partido: "+c.getPartido().getNumero()+
+					  "\n| Total de votos: "+c.getQuantidadeVotos()+
+					  "\n\n";
+				}
+			}
+			return msg;
+		}
 }
 
 	
