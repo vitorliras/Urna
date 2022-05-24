@@ -27,13 +27,28 @@ public class Main {
 			aux++;
 			opcao = menu();
 			
-
 		} while (opcao != 0);
+		
 		resultado();		
 	}
 
 	private static void resultado() {		
+		for(int i = 0; i < 100; i++)
+			System.out.print("=");
+		System.out.println();
 		
+		if(RepCandidato.getInstancia().vencedor() != "HOUVE UM EMPATE") {
+			System.out.println();
+			System.out.println("NOVO PREESIDENTE");
+			System.out.println();
+		}
+		
+		System.out.println(RepCandidato.getInstancia().vencedor());
+			
+
+		for(int i = 0; i < 100; i++)
+			System.out.print("=");
+	
 	}
 
 	private static void CadastrarEleitor(int n) {
@@ -58,9 +73,8 @@ public class Main {
 		e.setIdade(idade);
 		
 		RepEleitor.getInstancia().Add(e);
-		System.out.println(RepEleitor.getInstancia().mostrarEleitor(titulo));
 		limparConsole();
-	
+		System.out.println(RepEleitor.getInstancia().mostrarEleitor(titulo));
 	}
 
 	private static void ApuracaoDeVotos() {
@@ -93,11 +107,8 @@ public class Main {
 
 	private static void consultarCandidatos() {
 		
-		System.out.println("Selecione o número do candidato para consulta:");
-		
-		int opcaoCandidato = sc.nextInt();
 		limparConsole();
-		System.out.println(RepCandidato.getInstancia().mostrarCandidatoPorNumero(opcaoCandidato));
+		System.out.println(RepCandidato.getInstancia().mostrarTodosCandidatoSemVotos());
 		
 	}
 	
@@ -162,7 +173,7 @@ public class Main {
 		Partido P1 = new Partido();
 		
 		c1.setNome("Marco Silva Paiva");
-		c1.setIdade(32);
+		c1.setIdade(37);
 		P1.setNome("ABCD");
 		P1.setNumero(2);
 		c1.setPartido(P1);	
@@ -172,7 +183,7 @@ public class Main {
 		Candidato c2 = new Candidato();
 		Partido P2 = new Partido();
 		c2.setNome("Melissa Alves França");
-		c2.setIdade(25);
+		c2.setIdade(38);
 		P2.setNome("SGTY");
 		P2.setNumero(3);
 		c2.setPartido(P2);
